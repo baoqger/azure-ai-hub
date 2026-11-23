@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://baoqger.github.io/azure-ai-hub/</loc>
+         <loc>https://baoqger.github.io/home/</loc>
          <lastmod>2026-11-23</lastmod>
     </url>
     <url>
-         <loc>https://baoqger.github.io/azure-ai-hub/blog/</loc>
+         <loc>https://baoqger.github.io/home/blog/</loc>
          <lastmod>2026-11-23</lastmod>
     </url>
     <url>
-         <loc>https://baoqger.github.io/azure-ai-hub/blog/entra-agent-id--sidecar---a-practical-guide-to-building-secure-ai-agents/</loc>
+         <loc>https://baoqger.github.io/home/blog/entra-agent-id--sidecar---a-practical-guide-to-building-secure-ai-agents/</loc>
          <lastmod>2026-11-23</lastmod>
     </url>
     <url>
-         <loc>https://baoqger.github.io/azure-ai-hub/blog/foundry-iq--foundry-agent-from-knowledge-flow-to-enterprise-level-agent/</loc>
+         <loc>https://baoqger.github.io/home/blog/foundry-iq--foundry-agent-from-knowledge-flow-to-enterprise-level-agent/</loc>
          <lastmod>2026-11-23</lastmod>
     </url>
     <url>
-         <loc>https://baoqger.github.io/azure-ai-hub/blog/category/security/</loc>
+         <loc>https://baoqger.github.io/home/blog/category/security/</loc>
          <lastmod>2026-11-23</lastmod>
     </url>
     <url>
-         <loc>https://baoqger.github.io/azure-ai-hub/blog/category/azure-ai-search/</loc>
+         <loc>https://baoqger.github.io/home/blog/category/azure-ai-search/</loc>
          <lastmod>2026-11-23</lastmod>
     </url>
 </urlset>
