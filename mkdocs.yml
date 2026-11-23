@@ -6,6 +6,11 @@ repo_name: baoqger/azure-ai-hub
 
 docs_dir: articles
 
+# Extra paths for `mkdocs serve` live reload (posts live under articles/ already).
+watch:
+  - images
+  - mkdocs_hooks
+
 hooks:
   - mkdocs_hooks/obsidian.py
 

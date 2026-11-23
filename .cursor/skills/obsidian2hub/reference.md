@@ -40,7 +40,7 @@ For each asset reference `name`:
 |------|--------|
 | Duplicate image file name, same bytes | Skip copy |
 | Duplicate image file name, different bytes | Stop and ask user |
-| Note already in `articles/` | Overwrite only if user asked to refresh; otherwise ask |
+| Note already in `articles/posts/` | Overwrite only if user asked to refresh; otherwise ask |
 
 ## Encoding
 

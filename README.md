@@ -19,10 +19,49 @@ Published at [https://baoqger.github.io/azure-ai-hub/](https://baoqger.github.io
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\pip install -r requirements.txt
+.\scripts\dev.ps1 -Open
+```
+
+Or without the helper script:
+
+```powershell
 .\.venv\Scripts\mkdocs serve
 ```
 
 Open the URL shown in the terminal (default `http://127.0.0.1:8000/`).
+
+### Live reload (hot reload)
+
+`mkdocs serve` **rebuilds and refreshes the browser automatically** when watched files change (livereload). You do **not** need a separate file watcher unless you turned livereload off.
+
+| What | Watched by default |
+|------|-------------------|
+| Posts, `articles/index.md`, `articles/blog/` | Yes (`docs_dir: articles`) |
+| [`images/`](images/) | Yes — [`watch`](mkdocs.yml) + [`scripts/dev.ps1`](scripts/dev.ps1) |
+| [`mkdocs_hooks/`](mkdocs_hooks/) | Yes — same |
+| [`mkdocs.yml`](mkdocs.yml) | Yes |
+
+**Recommended dev command** (opens browser, faster incremental rebuilds):
+
+```powershell
+.\scripts\dev.ps1 -Open -Dirty
+```
+
+| Flag | Effect |
+|------|--------|
+| `-Open` | Open the site in your browser after the first build |
+| `-Dirty` | Only rebuild changed pages (faster while editing one post) |
+| `-NoLiveReload` | Rebuild on save but **no** auto browser refresh |
+| `-DevAddr "0.0.0.0:8000"` | Listen on all interfaces (e.g. test from another device) |
+
+After running `obsidian2hub`, saving a post under `articles/posts/` or an image under `images/` should trigger a reload within a second or two. If the tab does not refresh, hard-refresh once and confirm you did not pass `-NoLiveReload`.
+
+Disable the Material EOL banner in the terminal (optional):
+
+```powershell
+$env:NO_MKDOCS_2_WARNING = "1"
+.\scripts\dev.ps1 -Open -Dirty
+```
 
 Production build:
 

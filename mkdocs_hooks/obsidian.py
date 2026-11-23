@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
-from urllib.parse import quote
+
+from mkdocs.utils import get_relative_url
 
 OBSIDIAN_EMBED_RE = re.compile(r"!\[\[([^\]|]+)(?:\|[^\]]*)?\]\]")
 
@@ -12,26 +13,30 @@ def _repo_root(config) -> Path:
     return Path(config.config_file_path).resolve().parent
 
 
-def _to_site_image_path(asset_name: str) -> str:
-    """Site-root image URL; encodes spaces and special characters."""
-    # Preserve subpaths if present; encode each segment.
-    parts = asset_name.replace("\\", "/").split("/")
-    encoded = "/".join(quote(part, safe="") for part in parts)
-    return f"/images/{encoded}"
+def image_href(asset_name: str, doc_src_uri: str) -> str:
+    """Link from a doc file to a repo-level image (see on_files)."""
+    name = asset_name.strip().replace("\\", "/")
+    image_url = f"images/{name}"
+    return get_relative_url(image_url, doc_src_uri)
 
 
-def transform_obsidian_embeds(markdown: str) -> str:
+def transform_obsidian_embeds(markdown: str, doc_src_uri: str = "") -> str:
     """Convert Obsidian ![[file]] embeds to standard markdown images."""
 
     def repl(match: re.Match[str]) -> str:
         name = match.group(1).strip()
-        return f"![]({_to_site_image_path(name)})"
+        if doc_src_uri:
+            href = image_href(name, doc_src_uri)
+        else:
+            href = f"images/{name.replace(chr(92), '/')}"
+        return f"![]({href})"
 
     return OBSIDIAN_EMBED_RE.sub(repl, markdown)
 
 
 def on_page_markdown(markdown, page, config, files):
-    return transform_obsidian_embeds(markdown)
+    doc_src_uri = page.file.src_uri if page.file else ""
+    return transform_obsidian_embeds(markdown, doc_src_uri=doc_src_uri)
 
 
 def on_files(files, config):
