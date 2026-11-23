@@ -79,25 +79,16 @@ Run hook unit tests:
 
 ## Obsidian import vs. site build
 
-1. **Import** (`obsidian2hub`): Copies vault markdown **unchanged** (including `![[image.png]]`) into `articles/posts/` and assets into `images/`.
-2. **Build** (`mkdocs build`): The [`mkdocs_hooks/obsidian.py`](mkdocs_hooks/obsidian.py) hook converts Obsidian embeds to site-root image URLs and copies `images/` into the static output. Source files in git are not modified.
+1. **Import** (`obsidian2hub`): Copies the vault **body** unchanged (including `![[image.png]]`) into `articles/posts/`, adds blog YAML (including **one category** you provide), and copies assets into `images/`.
+2. **Build** (`mkdocs build`): The [`mkdocs_hooks/obsidian.py`](mkdocs_hooks/obsidian.py) hook converts Obsidian embeds at build time and bundles `images/`.
 
-### Blog metadata for new posts
+Example import:
 
-After importing a post, add YAML front matter at the top of the file in `articles/posts/` (not in Obsidian unless you want it round-tripped):
-
-```yaml
----
-date: 2026-11-08
-authors:
-  - chris-bao
-categories:
-  - Azure
-title: Your post title
----
+```powershell
+.\.cursor\skills\obsidian2hub\scripts\copy-note.ps1 -NoteTitle "My Note Title" -Category "Security"
 ```
 
-Author identifiers must exist in [`articles/blog/.authors.yml`](articles/blog/.authors.yml).
+Author identifiers in front matter must exist in [`articles/blog/.authors.yml`](articles/blog/.authors.yml) (default `chris-bao`).
 
 ## CI and deployment
 

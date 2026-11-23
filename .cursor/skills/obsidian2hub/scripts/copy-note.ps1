@@ -2,9 +2,14 @@ param(
     [Parameter(Mandatory = $true)]
     [string] $NoteTitle,
 
+    [Parameter(Mandatory = $true)]
+    [string] $Category,
+
     [string] $VaultRoot = "C:\Users\JBao6\Documents\obsidian-vault\OrgPro",
 
-    [string] $RepoRoot = ""
+    [string] $RepoRoot = "",
+
+    [string] $DefaultAuthor = "chris-bao"
 )
 
 $ErrorActionPreference = "Stop"
@@ -19,6 +24,11 @@ $imagesDir = Join-Path $RepoRoot "images"
 
 if (-not (Test-Path -LiteralPath $VaultRoot)) {
     throw "Vault root not found: $VaultRoot"
+}
+
+$category = $Category.Trim()
+if ([string]::IsNullOrWhiteSpace($category)) {
+    throw "Category is required (one category per article)."
 }
 
 New-Item -ItemType Directory -Force -Path $articlesDir, $imagesDir | Out-Null
@@ -47,11 +57,105 @@ if ($matches.Count -gt 1) {
   throw "Multiple notes match '$title'. Pick one:`n$list"
 }
 
+function Get-NoteBodyWithoutFrontMatter {
+    param([string] $Path)
+
+    $raw = [System.IO.File]::ReadAllText($Path)
+    if ($raw.Length -ge 1 -and [int][char]$raw[0] -eq 0xFEFF) {
+        $raw = $raw.Substring(1)
+    }
+
+    if ($raw -match '^(?s)\s*---\r?\n.*?\r?\n---\r?\n?') {
+        return $raw.Substring($Matches[0].Length)
+    }
+    return $raw
+}
+
+function Get-ExistingPostMeta {
+    param([string] $Path)
+
+    $result = @{
+        date = $null
+        authors = @()
+    }
+
+    if (-not (Test-Path -LiteralPath $Path)) { return $result }
+
+    $raw = [System.IO.File]::ReadAllText($Path)
+    if ($raw -notmatch '^(?s)\s*---\r?\n(.*?)\r?\n---') { return $result }
+
+    $yaml = $Matches[1]
+    if ($yaml -match '(?m)^date:\s*(.+)\s*$') {
+        $result.date = $Matches[1].Trim().Trim("`'""").Trim()
+    }
+
+    $inAuthors = $false
+    foreach ($line in ($yaml -split '\r?\n')) {
+        if ($line -match '^authors:\s*$') {
+            $inAuthors = $true
+            continue
+        }
+        if ($inAuthors) {
+            if ($line -match '^\s+-\s+(.+)\s*$') {
+                $result.authors += $Matches[1].Trim().Trim("`'""").Trim()
+                continue
+            }
+            if ($line -match '^[^\s#]') { $inAuthors = $false }
+        }
+    }
+
+    return $result
+}
+
+function Build-PostMarkdown {
+    param(
+        [string] $Body,
+        [string] $PostTitle,
+        [string] $CategoryName,
+        [string] $Date,
+        [string[]] $Authors
+    )
+
+    $authorLines = ($Authors | ForEach-Object { "  - $_" }) -join "`n"
+    $front = @"
+---
+date: $Date
+authors:
+$authorLines
+categories:
+  - $CategoryName
+title: $PostTitle
+---
+"@.TrimEnd()
+
+    if ($Body.Length -gt 0 -and $Body[0] -ne "`n" -and $Body[0] -ne "`r") {
+        $front += "`n"
+    }
+    return $front + $Body
+}
+
 $note = $matches[0]
 $destMd = Join-Path $articlesDir $note.Name
-Copy-Item -LiteralPath $note.FullName -Destination $destMd -Force
+$body = Get-NoteBodyWithoutFrontMatter -Path $note.FullName
 
-$content = Get-Content -LiteralPath $note.FullName -Raw -Encoding UTF8
+$existing = Get-ExistingPostMeta -Path $destMd
+$postDate = $existing.date
+if (-not $postDate) {
+    $postDate = $note.LastWriteTime.ToString("yyyy-MM-dd")
+}
+$authors = @($existing.authors)
+if ($authors.Count -eq 0) {
+    $authors = @($DefaultAuthor)
+}
+
+$postTitle = $note.BaseName
+$merged = Build-PostMarkdown -Body $body -PostTitle $postTitle -CategoryName $category `
+    -Date $postDate -Authors $authors
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($destMd, $merged, $utf8NoBom)
+
+$content = $body
 
 $assets = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 
@@ -122,6 +226,7 @@ foreach ($ref in $assets) {
 }
 
 Write-Output "Note: $($note.FullName) -> $destMd"
+Write-Output "Category: $category"
 $newCopies = @($copied | Where-Object { $_ -notlike '[skip identical]*' })
 Write-Output "Images: $($newCopies.Count) new, $($copied.Count) total refs ($($copied -join ', '))"
 if ($missing.Count -gt 0) {

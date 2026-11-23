@@ -42,6 +42,24 @@ For each asset reference `name`:
 | Duplicate image file name, different bytes | Stop and ask user |
 | Note already in `articles/posts/` | Overwrite only if user asked to refresh; otherwise ask |
 
+## Blog front matter (import)
+
+Written by `copy-note.ps1` (not part of the vault body):
+
+```yaml
+---
+date: yyyy-MM-dd
+authors:
+  - chris-bao
+categories:
+  - <single category from user>
+title: <vault file base name>
+---
+```
+
+- **One category only** — `categories` has exactly one list item.
+- Re-import keeps existing `date` and `authors` when the post file already exists; **category** and **body** come from the current import (category from user, body from vault).
+
 ## Encoding
 
-Read/write as UTF-8 without BOM when using .NET APIs; `Copy-Item` is preferred for the markdown file to preserve original bytes.
+Post files are written UTF-8 without BOM. Image files use `Copy-Item`.

@@ -6,7 +6,6 @@ categories:
   - Security
 title: Entra Agent ID + Sidecar - A Practical Guide to Building Secure AI Agents
 ---
-
 ## Background
 
 In my previous article, I introduced `Entra Agent ID`, an identity management service designed specifically for AI agents, and walked through its conceptual model. The design can feel a little abstract, so in this article, let's put it into practice and build a more secure cloud-based AI agent using `Entra Agent ID` and the `Sidecar` pattern.
