@@ -357,8 +357,6 @@
       
         
       
-        
-      
     
     
     
@@ -408,44 +406,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/ai-agents/" class="md-nav__link">
+      <a href="../category/security/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    AI Agents
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../category/azure/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Azure
+    Security
   
 
     
@@ -672,8 +640,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../category/azure/">Azure</a>, 
-                              <a href="../category/ai-agents/">AI Agents</a></span>
+                              <a href="../category/security/">Security</a></span>
                         </div>
                       </li>
                     
@@ -715,7 +682,7 @@
 
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
 <p>In my previous article, I introduced <code>Entra Agent ID</code>, an identity management service designed specifically for AI agents, and walked through its conceptual model. The design can feel a little abstract, so in this article, let's put it into practice and build a more secure cloud-based AI agent using <code>Entra Agent ID</code> and the <code>Sidecar</code> pattern.</p>
-<p><img alt="" src="/images/Securing_AI_Agents_Architecture.png" /></p>
+<p><img alt="" src="../../images/Securing_AI_Agents_Architecture.png" /></p>
 <h2 id="owasp-identity-and-privilege-abuse">OWASP Identity and Privilege Abuse<a class="headerlink" href="#owasp-identity-and-privilege-abuse" title="Permanent link">&para;</a></h2>
 <p>In 2026, OWASP published its Top 10 security risks for Agentic Applications. The third item, <code>Identity and Privilege Abuse</code>, addresses risks that arise when AI agents do not have their own identities and permission management. For example, an agent without a dedicated ID may have to use the user's ID or the ID of its host application, making dedicated management and auditing difficult. Or, to support long-running agents, developers may store identity credentials directly in code, creating a risk of credential exposure.</p>
 <p>OWASP recommends two practices to address this risk:</p>
@@ -724,12 +691,12 @@
 <li>Do not let agents store identity credentials directly.</li>
 </ul>
 <p>As we discussed in the previous article, the Entra Agent ID model addresses both of these recommendations.</p>
-<p><img alt="" src="/images/Pasted%20image%2020261102113718.png" /></p>
+<p><img alt="" src="../../images/Pasted%20image%2020261102113718.png" /></p>
 <p>With that context in mind, let's look at how to put the model into practice.</p>
 <h2 id="the-sidecar-pattern">The Sidecar Pattern<a class="headerlink" href="#the-sidecar-pattern" title="Permanent link">&para;</a></h2>
 <p>This architecture uses the <code>Sidecar</code> pattern, a familiar approach in cloud-native applications. A <code>Sidecar</code> is a helper process that runs alongside an application and provides capabilities the application needs, while keeping that supporting logic separate from the application itself. The Sidecar and application communicate over a local network and share a lifecycle. Common uses include networking, logging and monitoring, and managing keys or certificates.</p>
 <p>Our example follows the same pattern. As shown below, the architecture consists of four containers:</p>
-<p><img alt="" src="/images/Pasted%20image%2020261107214152.png" /></p>
+<p><img alt="" src="../../images/Pasted%20image%2020261107214152.png" /></p>
 <ul>
 <li><strong>AI agent:</strong> The main agent application, built here with LangChain and Flask.</li>
 <li><strong>LLM/SLM:</strong> The generative AI model. You can use a large model in the cloud or a small model locally. This example uses Ollama with Qwen2.5:3B.</li>
@@ -810,7 +777,7 @@
 </span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="nt">ollama-data</span><span class="p">:</span>
 </span></code></pre></div>
 <p>The agent and Weather API are implemented in my own code, so their container images need to be built locally first. Ollama and the Sidecar use publicly available images.</p>
-<p><img alt="" src="/images/Pasted%20image%2020261108090347.png" /></p>
+<p><img alt="" src="../../images/Pasted%20image%2020261108090347.png" /></p>
 <p>The most distinctive part of this architecture is the Sidecar container. It uses Microsoft's publicly available <code>mcr.microsoft.com/entra-sdk/auth-sidecar</code> image. The implementation is open source and built on the <code>microsoft-identity-web</code> project, which is worth exploring if you'd like to learn more about the details.</p>
 <p>You can find the complete project setup on my GitHub: <a href="https://github.com/baoqger/entra-agent-id-security-lab">https://github.com/baoqger/entra-agent-id-security-lab</a></p>
 <p>The full project is fairly large and complex, so I can't cover every detail here. Instead, let's focus on a few security details and see how the implementation follows the OWASP best practices we discussed above.</p>
