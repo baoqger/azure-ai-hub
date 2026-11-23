@@ -14,7 +14,7 @@ if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
     $RepoRoot = (Resolve-Path (Join-Path $scriptDir "..\..\..\..")).Path
 }
 
-$articlesDir = Join-Path $RepoRoot "articles"
+$articlesDir = Join-Path (Join-Path $RepoRoot "articles") "posts"
 $imagesDir = Join-Path $RepoRoot "images"
 
 if (-not (Test-Path -LiteralPath $VaultRoot)) {

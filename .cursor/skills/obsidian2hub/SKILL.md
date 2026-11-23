@@ -1,6 +1,6 @@
 ---
 name: obsidian2hub
-description: Copies a note from the local Obsidian vault into this repo unchanged (articles/) and copies referenced image assets into images/. Use when the user gives an Obsidian note title, says obsidian2hub, or asks to import or sync a vault note into azure-ai-hub.
+description: Copies a note from the local Obsidian vault into this repo unchanged (articles/posts/) and copies referenced image assets into images/. Use when the user gives an Obsidian note title, says obsidian2hub, or asks to import or sync a vault note into azure-ai-hub.
 ---
 
 # Obsidian → Azure AI Hub
@@ -11,7 +11,7 @@ Import one Obsidian note into this repository. **Do not edit the markdown body**
 
 | Destination | Path (repo root) |
 |-------------|------------------|
-| Markdown | `articles/` |
+| Markdown | `articles/posts/` |
 | Images | `images/` |
 
 ## Default vault
@@ -32,7 +32,7 @@ Override with an absolute vault root when the user specifies one.
    - If **>1** match: show full paths and ask which file to use.
 
 2. **Copy markdown**
-   - Target: `articles/<same-filename-as-vault>.md`
+   - Target: `articles/posts/<same-filename-as-vault>.md`
    - Use raw file copy (preserve encoding and line endings). Do not reformat or rewrite.
 
 3. **Copy images**
@@ -46,7 +46,7 @@ Override with an absolute vault root when the user specifies one.
 
 4. **Report**
    - Vault source path
-   - `articles/` and `images/` paths written
+   - `articles/posts/` and `images/` paths written
    - List of images copied (and any referenced assets not found in the vault)
 
 ## Preferred automation
@@ -71,7 +71,7 @@ The script copies markdown without changes and copies images; it does not rewrit
 If the script cannot run:
 
 1. Locate the `.md` file per step 1.
-2. `Copy-Item` the note to `articles/`.
+2. `Copy-Item` the note to `articles/posts/`.
 3. Extract embeds with regex; `Copy-Item` each resolved image to `images/`.
 4. Never run find-replace on the markdown for this task.
 
