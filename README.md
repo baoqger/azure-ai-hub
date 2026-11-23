@@ -2,7 +2,7 @@
 
 Static site for Azure AI guides and articles, built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
-Published at [https://baoqger.github.io/home/](https://baoqger.github.io/home/) when GitHub Pages is enabled for this repository.
+Published via [Azure Static Web Apps](https://learn.microsoft.com/azure/static-web-apps/) (see CI workflow). Set [`site_url`](mkdocs.yml) to your SWA hostname (e.g. `https://<app-name>.azurestaticapps.net/`).
 
 ## Repository layout
 
@@ -92,12 +92,20 @@ Author identifiers in front matter must exist in [`articles/blog/.authors.yml`](
 
 ## CI and deployment
 
-The [`.github/workflows/docs.yml`](.github/workflows/docs.yml) workflow:
+A single workflow builds and deploys the site:
 
-- On pull requests: install deps, run tests, `mkdocs build --strict`, upload `site/` as an artifact.
-- On push to `main`: build and deploy to the `gh-pages` branch via GitHub Actions.
+[`.github/workflows/azure-static-web-apps-polite-pond-0d22a6d0f.yml`](.github/workflows/azure-static-web-apps-polite-pond-0d22a6d0f.yml)
 
-Enable **GitHub Pages** for this repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+| Trigger | What runs |
+|---------|-----------|
+| **Push to `main`** | `pip install` → unit tests → `mkdocs build --strict` → deploy `site/` to Azure Static Web Apps |
+| **Pull request** | Same build; SWA creates a **staging** preview; closing the PR runs the close job |
+
+The deploy step uses `skip_app_build: true` and uploads the pre-built `site/` folder (MkDocs output).
+
+**Requirements in GitHub:** secret `AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_POND_0D22A6D0F` (injected when the SWA resource is linked to this repo).
+
+**Azure portal:** Static Web App → **Configuration** → set `site_url` in [`mkdocs.yml`](mkdocs.yml) to match **Overview → URL** (or your custom domain).
 
 ## Python version
 
