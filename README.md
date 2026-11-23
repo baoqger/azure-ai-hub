@@ -2,7 +2,7 @@
 
 Static site for Azure AI guides and articles, built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
-Published at [https://baoqger.github.io/azure-ai-hub/](https://baoqger.github.io/azure-ai-hub/) when GitHub Pages is enabled for this repository.
+Published at [https://baoqger.github.io/home/](https://baoqger.github.io/home/) when GitHub Pages is enabled for this repository.
 
 ## Repository layout
 
