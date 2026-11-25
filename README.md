@@ -108,6 +108,21 @@ The deploy step uses `skip_app_build: true` and uploads the pre-built `site/` fo
 
 **Azure portal:** Static Web App → **Configuration** → set `site_url` in [`mkdocs.yml`](mkdocs.yml) to match **Overview → URL** (or your custom domain).
 
+## Page views (Application Insights)
+
+Production builds embed the [Application Insights JavaScript SDK](https://learn.microsoft.com/azure/azure-monitor/app/javascript-sdk) loader. It records **page views** per URL; new posts do not require analytics changes.
+
+| Scope | Behavior |
+|-------|----------|
+| **Production** (`main` deploy) | CI sets `APPLICATIONINSIGHTS_CONNECTION_STRING` during `mkdocs build`; telemetry runs only on the host from `site_url` in `mkdocs.yml`. |
+| **Local `mkdocs serve` / PR builds** | No connection string in the build → no telemetry script (or empty stub). |
+
+**GitHub (production):** **Settings → Secrets and variables → Actions** → `APPLICATIONINSIGHTS_CONNECTION_STRING` (from Application Insights → **Overview** → connection string).
+
+Verify in Azure: Application Insights → **Usage** → page views, or **Live metrics** after visiting the deployed site.
+
+This is **client-side RUM**, not the Static Web Apps “Enable Application Insights” toggle (that path is for SWA **API** / Functions).
+
 ## Python version
 
 Use **Python 3.10+** (3.12 recommended; matches CI).

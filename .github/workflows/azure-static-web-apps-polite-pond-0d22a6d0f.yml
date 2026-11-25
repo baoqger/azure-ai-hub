@@ -40,6 +40,8 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Build MkDocs site
+        env:
+          APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ github.ref == 'refs/heads/main' && secrets.APPLICATIONINSIGHTS_CONNECTION_STRING || '' }}
         run: mkdocs build --strict
 
       - name: Deploy to Azure Static Web Apps

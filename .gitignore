@@ -1,4 +1,5 @@
 site/
+overrides/assets/javascripts/appinsights-loader.generated.js
 .venv/
 __pycache__/
 *.py[cod]

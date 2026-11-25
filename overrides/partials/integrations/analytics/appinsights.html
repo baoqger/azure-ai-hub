@@ -1,0 +1,5 @@
+{#- Application Insights RUM (production hostname only, see mkdocs_hooks/appinsights.py). -#}
+{% if config.extra.analytics and config.extra.analytics.connection_string %}
+  <script src="{{ 'assets/javascripts/appinsights-loader.generated.js' | url }}"></script>
+  <script id="__analytics">function __md_analytics(){}</script>
+{% endif %}

@@ -11,12 +11,15 @@ docs_dir: articles
 watch:
   - images
   - mkdocs_hooks
+  - overrides
 
 hooks:
   - mkdocs_hooks/obsidian.py
+  - mkdocs_hooks/appinsights.py
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -94,6 +97,8 @@ nav:
     - blog/index.md
 
 extra:
+  analytics:
+    provider: appinsights
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/baoqger/azure-ai-hub
