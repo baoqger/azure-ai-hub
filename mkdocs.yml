@@ -1,5 +1,5 @@
 site_name: Azure AI Hub
-site_description: Guides and articles on Azure AI, agents, and security
+site_description: Hands-on Azure AI and Microsoft Foundry guides—models, agents, grounding, Foundry Tools, and governance
 # Set to your Azure Static Web Apps URL (Overview → URL in the portal).
 site_url: https://polite-pond-0d22a6d0f.azurestaticapps.net/
 repo_url: https://github.com/baoqger/azure-ai-hub

@@ -16,19 +16,26 @@ Published via [Azure Static Web Apps](https://learn.microsoft.com/azure/static-w
 
 ## Local development
 
+One-time setup:
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\pip install -r requirements.txt
-.\scripts\dev.ps1 -Open
 ```
 
-Or without the helper script:
+**Hot reload** (auto browser refresh on save, incremental rebuilds):
 
 ```powershell
-.\.venv\Scripts\mkdocs serve
+.\scripts\dev.ps1 -Open -Dirty
 ```
 
-Open the URL shown in the terminal (default `http://127.0.0.1:8000/`).
+Open `http://127.0.0.1:8000/` if the browser did not open automatically.
+
+Equivalent without the helper script:
+
+```powershell
+.\.venv\Scripts\mkdocs serve -o --dirty --watch-theme -w images -w mkdocs_hooks
+```
 
 ### Live reload (hot reload)
 
@@ -40,12 +47,6 @@ Open the URL shown in the terminal (default `http://127.0.0.1:8000/`).
 | [`images/`](images/) | Yes — [`watch`](mkdocs.yml) + [`scripts/dev.ps1`](scripts/dev.ps1) |
 | [`mkdocs_hooks/`](mkdocs_hooks/) | Yes — same |
 | [`mkdocs.yml`](mkdocs.yml) | Yes |
-
-**Recommended dev command** (opens browser, faster incremental rebuilds):
-
-```powershell
-.\scripts\dev.ps1 -Open -Dirty
-```
 
 | Flag | Effect |
 |------|--------|
