@@ -2,7 +2,7 @@
 
 Static site for Azure AI guides and articles, built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
-Published via [Azure Static Web Apps](https://learn.microsoft.com/azure/static-web-apps/) (see CI workflow). Set [`site_url`](mkdocs.yml) to your SWA hostname (e.g. `https://<app-name>.azurestaticapps.net/`).
+Published via [Azure Static Web Apps](https://learn.microsoft.com/azure/static-web-apps/) (see CI workflow). Set [`site_url`](mkdocs.yml) to your **public** URL (custom domain or `https://<app-name>.azurestaticapps.net/`).
 
 ## Repository layout
 
