@@ -1,0 +1,13 @@
+{
+  "name": "azure-ai-hub-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal Azure Static Web Apps managed API (enables SWA Application Insights integration).",
+  "main": "src/functions/*.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.6.0"
+  }
+}

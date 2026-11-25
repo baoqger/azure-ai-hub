@@ -12,6 +12,8 @@ Published via [Azure Static Web Apps](https://learn.microsoft.com/azure/static-w
 | [`articles/posts/`](articles/posts/) | Blog posts (imported from Obsidian) |
 | [`images/`](images/) | Images referenced by posts |
 | [`mkdocs_hooks/`](mkdocs_hooks/) | Build-time Obsidian `![[...]]` transform and image bundling |
+| [`api/`](api/) | Minimal SWA managed API (`GET /api/health`); enables portal Application Insights for the Functions backend |
+| [`staticwebapp.config.json`](staticwebapp.config.json) | SWA platform settings (`apiRuntime`); copied into `site/` at deploy |
 | [`.cursor/skills/obsidian2hub/`](.cursor/skills/obsidian2hub/) | Import notes from Obsidian into `articles/posts/` + `images/` |
 
 ## Local development
@@ -121,7 +123,18 @@ Production builds embed the [Application Insights JavaScript SDK](https://learn.
 
 Verify in Azure: Application Insights → **Usage** → page views, or **Live metrics** after visiting the deployed site.
 
-This is **client-side RUM**, not the Static Web Apps “Enable Application Insights” toggle (that path is for SWA **API** / Functions).
+This is **client-side RUM**, separate from SWA server-side monitoring.
+
+### Link SWA to Application Insights (API)
+
+After the minimal [`api/`](api/) app is deployed (`api_location: api` in CI):
+
+1. Azure portal → your **Static Web App** → **Application Insights** → **Yes** → select the same App Insights resource you created → **Save**.
+2. Smoke test: `https://<your-swa-host>/api/health` should return `{"status":"ok","service":"azure-ai-hub"}`.
+
+That portal toggle reports **API/server** telemetry (requests, failures, traces). **Blog page views** still come from the JavaScript loader above.
+
+Local API (optional): install [Azure Functions Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local) and Node 20+, then run `npm install` in `api/` and `func start` from `api/`, or use the [Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli) with `--api-location api`.
 
 ## Python version
 

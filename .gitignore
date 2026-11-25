@@ -1,4 +1,5 @@
 site/
+api/node_modules/
 overrides/assets/javascripts/appinsights-loader.generated.js
 .venv/
 __pycache__/

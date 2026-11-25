@@ -44,6 +44,9 @@ jobs:
           APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ github.ref == 'refs/heads/main' && secrets.APPLICATIONINSIGHTS_CONNECTION_STRING || '' }}
         run: mkdocs build --strict
 
+      - name: Copy Static Web Apps config into site output
+        run: cp staticwebapp.config.json site/
+
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -52,7 +55,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
           app_location: site
-          api_location: ""
+          api_location: api
           output_location: ""
           skip_app_build: true
 
