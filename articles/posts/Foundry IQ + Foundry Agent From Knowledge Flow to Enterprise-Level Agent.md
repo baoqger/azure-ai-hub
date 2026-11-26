@@ -3,7 +3,7 @@ date: 2026-09-10
 authors:
   - chris-bao
 categories:
-  - Azure AI Search
+  - RAG
 title: Foundry IQ + Foundry Agent From Knowledge Flow to Enterprise-Level Agent
 ---
 ## Background
