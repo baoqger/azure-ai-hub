@@ -6,8 +6,6 @@ categories:
   - Azure ML
 title: Hands-On Component-Based Development on Azure ML - From Component to Pipeline
 ---
-#azure #azureai #machinelearning
-
 ## Background
 
 In my previous two articles, I shared how to train a machine learning model on Azure ML and deploy it as a public endpoint for online inference. After reading those posts, you should already have a basic understanding of several important resources in Azure ML.
@@ -439,8 +437,3 @@ After reading this post, you should have a clearer understanding of:
 - and how this design prepares you for more advanced topics such as MLOps.
 
 I will continue sharing more Azure AI and Azure ML hands-on topics in future articles.
-
----
-
-I'm Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting services for enterprises and individuals.
-For collaboration, feel free to contact me at: baoqger@gmail.com

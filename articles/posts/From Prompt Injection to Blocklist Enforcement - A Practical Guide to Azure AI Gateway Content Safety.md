@@ -6,8 +6,6 @@ categories:
   - AI Gateway
 title: From Prompt Injection to Blocklist Enforcement - A Practical Guide to Azure AI Gateway Content Safety
 ---
-#apim
-
 ## Background
 
 In my previous articles, I shared some of the new AI capabilities in Azure API Management, such as the `token-based rate limiting policy` and the `Redis-based semantic caching policy`. These capabilities are very helpful for reducing the cost of GenAI applications and improving performance.
@@ -239,8 +237,3 @@ As we expected, all of these prompts triggered the safety mechanisms we configur
 In this article, I shared a practical way to add content safety controls to an AI Gateway by integrating APIM with Azure Content Safety. We walked through the architecture, the APIM policy design, and several concrete test cases, including violent content, prompt injection, and blocklist-based interception.
 
 If you are building AI applications in production, safety controls like these are not optional. They are part of the core system design. Smart design, right?
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting services for both enterprises and individuals.  
-For collaboration: baoqger@gmail.com

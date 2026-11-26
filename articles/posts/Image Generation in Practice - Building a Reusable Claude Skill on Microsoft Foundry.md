@@ -6,8 +6,6 @@ categories:
   - Multimodality
 title: Image Generation in Practice - Building a Reusable Claude Skill on Microsoft Foundry
 ---
-#azure #azureai #skill #aigc
-
 ## Background
 
 In this article, let's step into a new area: `AI-based image generation`. This technology has broad potential in fields such as `media`, `education`, and `marketing`. I will first share what I learned about the image generation models available on Microsoft Foundry, then build a simple image generation script around one of them. As a next step, I will package that script into a reusable Claude Skill so it can be used more conveniently in daily work.
@@ -206,8 +204,3 @@ python ".claude/skills/azure-image-generator/scripts/generate_image.py" --prompt
 This Claude Skill introduces a few improvements over the original script. First, the generated image filename is no longer hardcoded. Instead, it is derived from the content of the `prompt`, which makes the output file more descriptive. Second, the `prompt` is no longer passed directly through the shell command. It is first stored in a file and then read by the script, which helps avoid bugs caused by special characters in the prompt. After my own testing and validation, this Claude Skill can produce stable output.
 
 Now it is time to start your own creative journey with this Skill.
-
----
-
-I am Chris Bao, a Microsoft-certified trainer focused on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting services for both enterprises and individual learners.  
-For collaboration, please contact: baoqger@gmail.com

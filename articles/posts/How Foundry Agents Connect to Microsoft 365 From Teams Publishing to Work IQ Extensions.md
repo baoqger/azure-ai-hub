@@ -6,8 +6,6 @@ categories:
   - Agent
 title: How Foundry Agents Connect to Microsoft 365 From Teams Publishing to Work IQ Extensions
 ---
-#publicarticle
-
 ## Background
 
 In previous articles, I believe many of you have already seen the value and convenience of Microsoft Foundry Agent Service when it comes to hosting Foundry Agents. With this serverless approach, developers do not need to deploy the agent themselves, and they also do not need to manage the underlying infrastructure.
@@ -100,8 +98,3 @@ The publishing approach above solves the distribution problem for Foundry Agents
 Both directions are worth exploring further. If there is interest, I can continue with separate articles to share practical usage and integration experience around `Work IQ`, `MCP`, and `M365 Agents Toolkit`.
 
 If your goal is simply to connect a Foundry Agent to Teams as quickly as possible, the built-in publishing capability in Microsoft Foundry Agent Service is already efficient enough. But if you need deeper integration with the Microsoft 365 ecosystem, then bringing in `Work IQ` or `M365 Agents Toolkit` is a better next step.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting services for both enterprises and individuals.  
-For collaboration, please contact: baoqger@gmail.com

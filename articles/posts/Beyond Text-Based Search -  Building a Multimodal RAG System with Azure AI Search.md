@@ -6,7 +6,6 @@ categories:
   - RAG
 title: Beyond Text-Based Search -  Building a Multimodal RAG System with Azure AI Search
 ---
-#azure #azureai #azureaisearch #rag
 
 ### Background
 

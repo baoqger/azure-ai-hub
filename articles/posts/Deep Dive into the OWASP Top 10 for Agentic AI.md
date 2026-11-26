@@ -6,8 +6,6 @@ categories:
   - Security
 title: Deep Dive into the OWASP Top 10 for Agentic AI
 ---
-#security
-
 ## Background
 
 Today I want to share a very interesting topic: the `security risks of Agentic AI`. In this area, there is a well-known organization called `OWASP (Open Worldwide Application Security Project)`. In the internet era, OWASP published the widely adopted security guidance `OWASP Top 10 for Web Applications`. In the Agentic AI era, that framework is clearly no longer enough. So in 2026, OWASP officially published the `OWASP Top 10 for Agentic Applications`. In this article, I want to walk through the ten most common and representative security risks in Agentic AI one by one.
@@ -122,8 +120,3 @@ For this type of threat, continuous monitoring is still necessary.
 ## Summary
 
 There are no perfectly clear boundaries between these risks. As we have seen above, the problems they describe are closely related. In the real world, an attack rarely exploits just one weakness. More often, it takes advantage of multiple security gaps at the same time.
-
----
-
-I’m Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting for both enterprises and individual learners.  
-For collaboration, please contact: baoqger@gmail.com

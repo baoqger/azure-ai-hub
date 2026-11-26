@@ -96,6 +96,9 @@ nav:
   - Blog:
     - blog/index.md
 
+extra_css:
+  - assets/stylesheets/blog-excerpt-title.css
+
 extra:
   analytics:
     provider: appinsights

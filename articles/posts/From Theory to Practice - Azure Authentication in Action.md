@@ -6,7 +6,6 @@ categories:
   - Security
 title: From Theory to Practice - Azure Authentication in Action
 ---
-#publicarticle 
 
 *Learn how theoretical knowledge of Entra ID and RBAC becomes the solution to practical authentication challenges in Azure AI implementations*
 

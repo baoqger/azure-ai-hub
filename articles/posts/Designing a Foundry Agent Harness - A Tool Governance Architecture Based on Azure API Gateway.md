@@ -6,8 +6,6 @@ categories:
   - Agent
 title: Designing a Foundry Agent Harness - A Tool Governance Architecture Based on Azure API Gateway
 ---
-#apim #security
-
 ## Background
 
 In this article, I want to share what I learned about a very popular topic: `harness engineering`. This is a broad topic with many moving parts, so instead of trying to cover everything at once, I will focus on one important area first: how to govern `tool` calls made by AI agents.
@@ -274,9 +272,3 @@ Now, let's take a look at how the agent actually works:
 ## Summary
 
 The most important takeaway from this article is the value of a classic architecture pattern like API Gateway for AI Agent tool harness. Because of space limits, I only focused on the overall design in this post. In future articles, I will continue to share how we can use Gateway policies to truly harness tool behavior in practice.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting services for both enterprises and individuals.
-
-For collaboration, please contact: baoqger@gmail.com

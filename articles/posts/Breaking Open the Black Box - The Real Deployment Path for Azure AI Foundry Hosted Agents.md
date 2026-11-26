@@ -6,8 +6,6 @@ categories:
   - Agent
 title: Breaking Open the Black Box - The Real Deployment Path for Azure AI Foundry Hosted Agents
 ---
-#azure #azureai
-
 ## Background
 
 In a few previous articles, I shared how to build agents on Microsoft Foundry, connect them with Foundry IQ, and publish them into applications in the M365 ecosystem such as Teams.
@@ -229,8 +227,3 @@ So at the scope of the `Foundry Project`, assign either `Azure AI User` or `Azur
 Once all of these steps are done, we end up with a working `hosted agent`:
 
 ![[Pasted image 20260506112840.png]]
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting for both enterprises and individual learners.  
-For collaboration, please contact: baoqger@gmail.com

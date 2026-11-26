@@ -427,9 +427,3 @@ From this comparison, we can see that the Foundry Quota Tier is not just an abst
 For daily learning, lightweight testing, or simple demos, `Free Tier` may still cover some scenarios. But if you want to build more complete Agent applications, run multimodal experiments, or use newer model families, the gap between `Tier 3` and `Free Tier` becomes very clear.
 
 Great, right? Sometimes two subscriptions may look similar from the credit perspective, but the real development experience can be very different once we check the quota tier behind them.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focusing on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting services for both enterprises and individuals.
-
-For collaboration, please contact: baoqger@gmail.com

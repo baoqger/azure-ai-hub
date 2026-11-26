@@ -101,8 +101,3 @@ Remembering all Azure CLI commands can be painful. Now we can express the intent
 ## Summary
 
 If you already prefer doing development or operations work from the command line, combining GitHub Copilot CLI with Azure MCP Server feels like a very natural upgrade. On one side, you keep the speed and focus of the CLI experience. On the other side, you bring Azure documentation lookup, resource operations, and troubleshooting into the same workflow. Smart design, right?
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform, with hands-on experience in Azure AI services and agent development.
-I provide training and consulting services for both enterprises and individuals. For collaboration, please contact: baoqger@gmail.com

@@ -6,9 +6,6 @@ categories:
   - Document Intelligence
 title: Azure Content Understanding Accuracy Improvement Guide - Custom Analyzer + Prompt Engineering
 ---
-#azure #azureai #contentunderstanding
-
-
 ## Background
 
 In a previous article, I shared how Azure Content Understanding can be used to build an Intelligent Document Processing (IDP) solution. As I mentioned there, the core of Azure Content Understanding is its analyzers.
@@ -298,8 +295,3 @@ So the natural question is: how can we help the LLM find the right information m
 ![[Pasted image 20260427104615.png]]
 
 If you upload these learning samples when creating the analyzer, they can effectively improve the accuracy of the final analysis result. I will share the detailed usage of this part in a future article.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting services for both enterprises and individual learners.  
-For collaboration, please contact: baoqger@gmail.com

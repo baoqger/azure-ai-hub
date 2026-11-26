@@ -6,8 +6,6 @@ categories:
   - Edge AI
 title: Breaking Into Edge AI - Deconstructing the Transformer Autoregressive Loop with ONNX Small Models
 ---
-#AI #onnx #edge-ai
-
 ## Background
 
 If you have been reading my articles for a while, you probably know that I have focused mainly on `Azure` and `AWS` cloud AI services and applications. In this post, I want to step outside that comfort zone and introduce a different direction: **edge AI**.
@@ -272,11 +270,3 @@ This code is a clear, hands-on illustration of how Transformer inference works i
 Build and run it, and you will see a small model answering your questions locally on ordinary CPU hardware. Great, right?
 
 ![[Pasted image 20260915135410.png]]
-
----
-
-## About the Author
-
-I am Chris Bao, a software engineer focused on Azure and AWS AI platforms, specializing in AI services and agent development on both clouds.
-
-I provide training and consulting for enterprises and individuals. For collaboration, please contact: [baoqger@gmail.com](mailto:baoqger@gmail.com)

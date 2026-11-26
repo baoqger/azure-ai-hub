@@ -6,8 +6,6 @@ categories:
   - Agent
 title: Harness Deep Dive - Building a Claude Code-Style Personal Finance Agent with Microsoft Agent Framework
 ---
-#AIAgent
-
 ## Background
 
 In this article, I want to share what I learned about `agent harness` by building a `CLI`-style stock-investment agent inspired by `Claude Code`, and use that project to break down the value and role of an `agent harness`.
@@ -248,9 +246,3 @@ In this article, we used a Claude Code–style personal finance agent to turn ha
 The value of Microsoft Agent Framework is that it packages these capabilities by default through `create_harness_agent()`. You do not have to assemble everything from scratch. Provide a `client` and `agent_instructions`, and you get a fully featured harness agent. When you need to trim capabilities, use `disable_<feature>` to turn them off selectively. That “batteries included, disable as needed” design lowers the barrier to building a top-tier agent experience.
 
 One final point: this article uses personal finance as the demo scenario, but harness capabilities are domain-agnostic. Whether you are building a coding assistant, an ops agent, a research agent, or an enterprise knowledge assistant, the same capability stack applies. Once you understand what a harness is and where its boundaries lie, you are not locked into any one framework — knowing which capabilities you need matters more than memorizing a specific API surface.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting for organizations and individuals.
-
-For collaboration, please contact: baoqger@gmail.com

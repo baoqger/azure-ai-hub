@@ -180,7 +180,3 @@ I have shown quite a bit of code above, but no worries. You can find the complet
 Based on the core logic above, I prepared a small app to demonstrate the effect:
 
 ![[video-analyzer.gif]]
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting services for both enterprises and individuals. Contact: baoqger@gmail.com

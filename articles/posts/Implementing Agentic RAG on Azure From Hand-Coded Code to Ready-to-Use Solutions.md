@@ -6,8 +6,6 @@ categories:
   - RAG
 title: Implementing Agentic RAG on Azure From Hand-Coded Code to Ready-to-Use Solutions
 ---
-#azure #azureai #azureaisearch
-
 ## Background
 
 In previous articles, I shared various techniques for developing RAG based on Azure AI Search, whether it was Naive RAG, Advanced RAG, or multimodal RAG. The pipelines of these RAG systems were all linear, expecting satisfactory results from a single retrieval-generation pass. However, this expectation is actually quite unrealistic.
@@ -348,9 +346,3 @@ Previously, we introduced solutions based on Azure AI Search that actually used 
 Here you can also see that data sources (knowledge source) can have many origins. These data sources are managed by Knowledge base, and agentic retrieval + knowledge base + knowledge source is `Foundry IQ`, which is a very important module on the Microsoft Foundry platform, providing a data layer for agents.
 
 Based on Azure AI Search's agentic retrieval mode and Foundry IQ, you can relatively easily implement enterprise-level Agentic RAG systems. This work is left for everyone to explore!
-
----
-
-### About the Author
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform, specializing in various AI services and Agent development on the Azure platform. I can provide training and consulting services for various enterprises and individuals. For collaboration, please contact: baoqger@gmail.com

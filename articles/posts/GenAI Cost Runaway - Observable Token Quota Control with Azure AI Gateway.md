@@ -6,9 +6,6 @@ categories:
   - AI Gateway
 title: GenAI Cost Runaway - Observable Token Quota Control with Azure AI Gateway
 ---
-
-#apim
-
 ## Background
 
 In this note, I’ll continue exploring one of the core capabilities of **Azure AI Gateway**: **token-based rate limiting**.
@@ -231,8 +228,3 @@ We can also validate this from logs:
 In GenAI systems, **token-based throttling** is often more aligned with real resource consumption than request-count throttling. By using APIM’s `llm-token-limit` for quota enforcement and pairing it with `llm-emit-token-metric` to push token metrics into Application Insights / Log Analytics, we can manage **cost, user experience, and stability** under a single observable control plane.
 
 In coming notes, I’d like to dig further into practical topics such as: designing quota tiers per subscription, handling burst traffic more gracefully, and building dashboards/alerts based on token usage. Great, right?
-
----
-
-I’m Chris Bao. I focus on the Azure AI platform as a Microsoft-certified trainer, and I work a lot on Azure AI services and agent development.
-If you’d like to collaborate or need training/consulting, feel free to reach out: `baoqger@gmail.com`.

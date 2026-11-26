@@ -6,8 +6,6 @@ categories:
   - Azure ML
 title: From Training to Online Inference ： An Azure ML Model Deployment Walkthrough
 ---
-#azure #azureai #machinelearning
-
 ## Background
 
 In my previous article, I shared the first lesson in this Azure Machine Learning beginner series. Starting from how to run a training job, I broke down several important resources in Azure ML: `compute`, `environment`, `datastore`, and `job`. Once a training job is complete, we get a model.
@@ -211,8 +209,3 @@ Here we need to introduce an important component: `azureml inference server`. It
 ## Summary
 
 In this post, I shared what I learned about the second half of the Azure ML workflow: taking a trained model, registering it, exposing an endpoint, defining a deployment, and finally sending an online inference request. If you are just getting started with Azure ML, understanding this serving path will help you connect model training with real production-style usage. I will share more about related topics, such as MLflow models or multi-deployment traffic routing, in coming articles.
-
----
-
-I'm Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting services for both enterprises and individuals.  
-For collaboration, please contact: baoqger@gmail.com

@@ -6,7 +6,6 @@ categories:
   - RAG
 title: Evaluating RAG Systems with LLM-as-a-judge - The final piece of Agentic RAG puzzle
 ---
-#azureai #azureaisearch #rag 
 ### Background
 
 In my previous articles, based on Azure AI Search services, we discussed advanced RAG techniques and how to build multimodal RAG systems. While these concepts and techniques are great, from an engineering perspective, we've overlooked an important aspect: evaluating RAG systems. The importance of RAG evaluation systems is reflected in two aspects:

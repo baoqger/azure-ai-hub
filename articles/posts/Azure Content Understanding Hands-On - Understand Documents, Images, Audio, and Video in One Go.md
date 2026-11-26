@@ -6,8 +6,6 @@ categories:
   - Document Intelligence
 title: Azure Content Understanding Hands-On - Understand Documents, Images, Audio, and Video in One Go
 ---
-#azure #azureai #contentunderstanding
-
 ## Background
 
 In my previous articles, I shared how to build RAG systems, and during that journey we discussed many retrieval techniques. But if we look at the problem from a higher level, there is still one important piece missing: `data acquisition`.
@@ -267,10 +265,3 @@ Its summary of the video content is also very accurate:
 ```
 Summary: The video opens with a scenic aerial view of an island, transitioning to a collaboration logo between Flight Simulator and Microsoft Azure AI. It then cuts to an interview setting where a man discusses the importance of high-quality data for neural text-to-speech (TTS) technology. Visuals of audio waveforms and data centers emphasize the scale and technology behind the TTS model, which is built on 3,000 hours of data to capture nuanced, natural human voices. The scene shifts to expansive data center facilities and then to vibrant, realistic flight simulation footage showing planes flying over landscapes and approaching airports. The segment concludes with ground crew directing an Airbus plane, highlighting the integration of advanced AI voice technology in realistic flight simulation environments.
 ```
-
----
-
-## About the Author
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform, with hands-on experience across Azure AI services and Agent development.  
-I also provide training and consulting services for enterprises and individuals. For collaboration, please contact: `baoqger@gmail.com`

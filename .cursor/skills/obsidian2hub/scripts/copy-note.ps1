@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory = $true)]
     [string] $NoteTitle,
 
@@ -107,6 +107,49 @@ function Get-ExistingPostMeta {
     return $result
 }
 
+function Remove-ObsidianTagLines {
+    param([string] $Body)
+
+    if ([string]::IsNullOrEmpty($Body)) { return $Body }
+
+    $pattern = '^\s*(?:#[^\s#]+)(?:\s+#[^\s#]+)*\s*$'
+    $lines = $Body -split '\r?\n'
+    $kept = foreach ($line in $lines) {
+        if ($line -match $pattern) { continue }
+        $line
+    }
+    while ($kept.Count -gt 0 -and [string]::IsNullOrWhiteSpace($kept[0])) {
+        $kept = $kept[1..($kept.Count - 1)]
+    }
+    $joined = $kept -join "`n"
+    if ($Body.EndsWith("`n")) { return $joined + "`n" }
+    return $joined
+}
+
+function Remove-AboutAuthorSection {
+    param([string] $Body)
+
+    if ([string]::IsNullOrEmpty($Body)) { return $Body }
+
+    $pattern = '(?im)^#{1,4}\s+About\s+(?:the\s+)?author\s*$'
+    $match = [regex]::Match($Body, $pattern)
+    if (-not $match.Success) { return $Body }
+
+    $lines = $Body.Substring(0, $match.Index) -split '\r?\n'
+    while ($lines.Count -gt 0 -and [string]::IsNullOrWhiteSpace($lines[-1])) {
+        $lines = $lines[0..($lines.Count - 2)]
+    }
+    while ($lines.Count -gt 0 -and $lines[-1].Trim() -eq '---') {
+        $lines = $lines[0..($lines.Count - 2)]
+    }
+    while ($lines.Count -gt 0 -and [string]::IsNullOrWhiteSpace($lines[-1])) {
+        $lines = $lines[0..($lines.Count - 2)]
+    }
+    $joined = ($lines -join "`n").TrimEnd()
+    if ($Body.EndsWith("`n")) { return $joined + "`n" }
+    return $joined
+}
+
 function Build-PostMarkdown {
     param(
         [string] $Body,
@@ -137,6 +180,8 @@ title: $PostTitle
 $note = $matches[0]
 $destMd = Join-Path $articlesDir $note.Name
 $body = Get-NoteBodyWithoutFrontMatter -Path $note.FullName
+$body = Remove-ObsidianTagLines $body
+$body = Remove-AboutAuthorSection $body
 
 $existing = Get-ExistingPostMeta -Path $destMd
 $postDate = $existing.date

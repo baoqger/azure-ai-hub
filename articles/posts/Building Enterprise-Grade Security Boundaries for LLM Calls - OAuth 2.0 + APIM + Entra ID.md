@@ -245,8 +245,3 @@ This comparison highlights an important point: not every Entra ID token can acce
 In this article, I shared a practical way to protect LLM calls with OAuth 2.0 by combining `APIM` and `Entra ID`. The key idea is simple: do not expose your model endpoint directly. Instead, put it behind an authorization boundary and validate whether the incoming token was issued by the correct tenant and for the correct client.
 
 This approach is especially useful when you want to move GenAI applications or Agents into a more production-ready environment. Great, right? In future articles, I may also share more patterns around securing Agent and LLM workloads on Azure.
-
----
-
-I’m Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting for both enterprises and individuals.  
-For collaboration, please contact: baoqger@gmail.com

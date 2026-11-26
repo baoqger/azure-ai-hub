@@ -165,11 +165,3 @@ As shown in the configuration, the agent exposes a network port so users can int
 ## Summary
 
 In this article, I showed how to build a secure cloud-based AI agent architecture using Entra Agent ID and the Sidecar pattern. In future articles, I'll continue exploring this topic, including cloud deployment and additional agent authorization flows. Stay tuned!
-
----
-
-## About the Author
-
-I'm Chris Bao, a software engineer focused on Azure and AWS AI platforms. I specialize in AI services and agent development across Azure and AWS.
-
-I provide training and consulting services for businesses and individuals. For collaboration, please contact me at [baoqger@gmail.com](mailto:baoqger@gmail.com).

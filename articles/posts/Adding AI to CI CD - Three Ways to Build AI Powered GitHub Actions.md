@@ -6,8 +6,6 @@ categories:
   - Agentic DevOps
 title: Adding AI to CI CD - Three Ways to Build AI Powered GitHub Actions
 ---
-#github
-
 ## Background
 
 In my previous articles, I shared several new software development patterns in the AI era. Whether it is a `spec`-driven development approach or building your own development workflow with multiple custom `agent` components, these are all important directions worth learning and exploring.
@@ -392,9 +390,3 @@ In this article, we used the same bug report review requirement to break down th
 If you only want to quickly try AI capabilities in a single project, the first two methods are already enough. If you want to productize and modularize the capability and reuse it across multiple projects for the long term, building a custom `action` is the direction worth investing in.
 
 The detailed code for the three methods in this article is available in my repo: https://github.com/baoqger/demo-models-in-actions
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focusing on the Azure AI platform. I specialize in Azure AI services and Agent development, and I provide training and consulting services for enterprises and individual developers.
-
-For collaboration, please contact: baoqger@gmail.com

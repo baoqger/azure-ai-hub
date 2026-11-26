@@ -6,8 +6,6 @@ categories:
   - FinOps
 title: Using Microsoft Foundry Models with GitHub Copilot After the New Billing Model
 ---
-#github #githubcopilot
-
 ## Background
 
 If you are familiar with GitHub Copilot, you may already know that Copilot introduced a new billing model in early June 2026. Based on community feedback, many users have seen their token-related costs increase significantly.
@@ -89,9 +87,3 @@ We can also see that other platforms are supported by default, such as Google, O
 After that, we can start using it.
 
 ![[Pasted image 20260716102824.png|230]]
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focusing on the Azure AI platform. I specialize in Azure AI services and agent development, and I provide training and consulting services for enterprises and individual learners.
-
-For collaboration, please contact: baoqger@gmail.com

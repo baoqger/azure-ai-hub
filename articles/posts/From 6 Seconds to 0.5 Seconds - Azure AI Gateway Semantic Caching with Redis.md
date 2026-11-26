@@ -6,8 +6,6 @@ categories:
   - AI Gateway
 title: From 6 Seconds to 0.5 Seconds - Azure AI Gateway Semantic Caching with Redis
 ---
-#apim
-
 ## Background
 
 In this article, I want to share a particularly interesting AI solution: **semantic caching**. It can improve response speed, reduce latency, and deliver a better user experience for LLM-powered applications.
@@ -266,8 +264,3 @@ In this article, we explored semantic caching at the Agent layer—distinct from
 The demo showed a practical outcome: semantically similar prompts can move from ~6s to ~0.5s after warm-up. If you are building Agent platforms where users ask the “same question” in different wording, this pattern is worth trying.
 
 I will share more Azure AI Gateway scenarios—and a deeper dive into Redis semantic search—in upcoming articles.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform, with hands-on experience in Azure AI services and agent development.  
-I provide training and consulting services for both enterprises and individuals. For collaboration, please contact: baoqger@gmail.com

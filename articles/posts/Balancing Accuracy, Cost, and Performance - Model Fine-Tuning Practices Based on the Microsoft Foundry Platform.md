@@ -6,7 +6,6 @@ categories:
   - LLM Fine Tuning
 title: Balancing Accuracy, Cost, and Performance - Model Fine-Tuning Practices Based on the Microsoft Foundry Platform
 ---
-#azureai #genai理论
 ### Background 
 
 The agent calls tools to obtain external data or complete certain tasks; this is the most common working mode for the agent.

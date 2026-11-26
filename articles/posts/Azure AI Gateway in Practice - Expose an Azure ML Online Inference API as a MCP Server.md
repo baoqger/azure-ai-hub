@@ -6,8 +6,6 @@ categories:
   - AI Gateway
 title: Azure AI Gateway in Practice - Expose an Azure ML Online Inference API as a MCP Server
 ---
-#azure #azureai
-
 ## Background
 
 In one of my previous articles, I shared how to deploy a trained model on Azure Machine Learning and expose it as an online inference API. In this article, I want to continue along that path and share a very practical scenario: how to wrap that online inference API as an MCP service by using the Azure AI Gateway capabilities in Azure API Management (APIM), so that an AI Agent can call it in a more standardized way.
@@ -201,8 +199,3 @@ In this example, we wrapped an Azure ML online inference API as an MCP Server th
 The value of this approach is clear: you can reuse an existing REST API while exposing it in a more Agent-friendly and standardized form. If you already have a set of protected internal enterprise APIs, this pattern is worth studying. A practical strategy is to centralize authentication and governance in APIM first, and then consider exposing those capabilities to AI Agents through MCP.
 
 I think this is a very practical bridge between traditional cloud integration and the new Agent ecosystem. I will share more Azure AI Gateway scenarios in future articles.
-
----
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform, with hands-on experience in Azure AI services and agent development.  
-I provide training and consulting services for both enterprises and individuals. For collaboration, please contact: baoqger@gmail.com

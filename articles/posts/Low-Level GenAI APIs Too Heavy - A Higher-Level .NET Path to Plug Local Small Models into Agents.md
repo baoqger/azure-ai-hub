@@ -6,8 +6,6 @@ categories:
   - Edge AI
 title: Low-Level GenAI APIs Too Heavy - A Higher-Level .NET Path to Plug Local Small Models into Agents
 ---
-#AI #onnx #edge-ai #dotnet #meai
-
 ## Background
 
 In my previous article, I walked through how to load a small language model locally and build an AI app on top of the cross-platform `ONNX` model standard. That post focused on the **low-level APIs** exposed by `ONNX Runtime GenAI` — great for studying and practicing how large models work under the hood, but a bit too low-level for day-to-day Agent development.
@@ -100,11 +98,3 @@ Based on the two examples above, I put together a map of the ONNX-related .NET e
 ![[Pasted image 20260927210507.png]]
 
 As we mentioned above, the low-level GenAI APIs are still the best classroom for understanding transformers and autoregressive loops. For product-style Agent work on .NET, this higher-level path is the one I reach for first.
-
----
-
-## About the author
-
-I'm Chris Bao, a software engineer focused on Azure and AWS AI platforms, with experience across Azure and AWS AI services and Agent development.
-
-I offer training and consulting for teams and individuals. For collaboration, contact: [baoqger@gmail.com](mailto:baoqger@gmail.com)

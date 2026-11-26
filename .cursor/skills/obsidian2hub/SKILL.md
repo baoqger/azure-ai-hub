@@ -7,7 +7,7 @@ description: Copies a note from the local Obsidian vault into articles/posts/ wi
 
 Import one Obsidian note into this repository.
 
-- **Body:** Same content as the vault file (any vault YAML front matter is stripped; the note body is not rewritten).
+- **Body:** Same content as the vault file (any vault YAML front matter is stripped). On import, Obsidian tag-only lines (`#tag #tag`) and trailing **About the Author** sections are removed from `articles/posts/` (vault file unchanged).
 - **Blog front matter:** Added for MkDocs Material (`date`, `authors`, `title`, **one** `categories` entry).
 
 ## Required inputs

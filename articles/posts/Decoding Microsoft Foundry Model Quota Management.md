@@ -6,8 +6,6 @@ categories:
   - FinOps
 title: Decoding Microsoft Foundry Model Quota Management
 ---
-#azureai
-
 ## Background
 
 Microsoft Foundry provides many different large language models for us to use, which is very convenient. But there is one limitation that is often ignored: `quota`.
@@ -216,9 +214,3 @@ Quota                         Used    Limit
 ----------------------------  ------  -------
 OpenAI.GlobalStandard.gpt4.1  50.0    525.0
 ```
-
-## About the Author
-
-I am Chris Bao, a Microsoft Certified Trainer focused on the Azure AI platform. I specialize in Azure AI services and Agent development.
-
-I provide training and consulting services for enterprises and individuals. For collaboration, please contact: baoqger@gmail.com

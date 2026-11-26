@@ -6,7 +6,6 @@ categories:
   - RAG
 title: Step-by-Step Guide to Building Enterprise-Level RAG Systems with Azure From Blob to AI Search
 ---
-#azureaisearch #azure
 
 ### Background
 

@@ -61,11 +61,3 @@ I hope the project helps in a few concrete ways:
 - **AI agent security** — you can also use the stack as a baseline for offensive and defensive experiments around agent identity and privilege. That space is wide open—I’m sure others will find angles I haven’t thought of yet, and I’d love to hear about them.
 
 Next step: pick Lab 1, run the notebooks, then bring up Compose. Great way to connect theory to a running agent, right?
-
----
-
-## About the Author
-
-I'm Chris Bao, a software engineer focused on Azure and AWS AI platforms. I specialize in AI services and agent development across Azure and AWS.
-
-I provide training and consulting services for businesses and individuals. For collaboration, please contact me at [baoqger@gmail.com](mailto:baoqger@gmail.com).

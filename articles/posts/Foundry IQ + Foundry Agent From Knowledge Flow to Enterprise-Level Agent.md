@@ -424,13 +424,3 @@ If you're confused about how to manage permissions through RBAC on Azure, you ca
 After resolving the above issue, let's try again. This time, the Agent can engage in Q&A with users through the knowledge in the Knowledge base!
 
 ![[Pasted image 20260421153854.png]]
-
-
-
----
-
-## About the Author
-
-I'm Chris Bao, a Microsoft Certified Trainer specializing in the Azure AI platform, proficient in various AI services and Agent development on the Azure platform.
-I can provide training and consulting services for enterprises and individuals. For collaboration, please contact: `baoqger@gmail.com`
-

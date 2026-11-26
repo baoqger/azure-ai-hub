@@ -6,8 +6,6 @@ categories:
   - Security
 title: MCP Adaptation to OAuth 2.0 PRM - A Lightweight API Gateway-Based Approach
 ---
-#mcp #oauth #apim #agent
-
 ## Background
 
 Compared with today's AI agents, traditional applications tend to operate in a relatively static world. The resources a user needs through an app are usually known in advance. From an access-control perspective, that makes life much easier.
@@ -228,9 +226,3 @@ I used Azure in this walkthrough, but every major cloud offers some form of API 
 - Putting PRM on **API Management** keeps your MCP service thin: one MCP proxy for JWT validation and error shaping, one API proxy for metadata—Step 1 and Step 2 without code changes in the backend.
 
 If you are exposing MCP to agents in production, this gateway layer is a practical place to standardize auth. Smart design, right?
-
----
-
-I am Chris Bao, a software engineer focused on Azure and AWS AI platforms. I specialize in Azure and AWS AI services and agent development, and I provide training and consulting for enterprises and individuals.
-
-For collaboration, please contact: [baoqger@gmail.com](mailto:baoqger@gmail.com)

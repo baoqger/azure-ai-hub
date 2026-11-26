@@ -1,0 +1,23 @@
+/* Linked title on blog index and category excerpt cards */
+.md-post--excerpt .md-post__headline {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.md-post--excerpt .md-post__headline-link {
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+.md-post--excerpt .md-post__headline-link:hover {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}
+
+/* Blog plugin also injects the title as the first heading in excerpt HTML */
+.md-post--excerpt .md-post__content > :is(h1, h2):first-child {
+  display: none;
+}
