@@ -1,8 +1,11 @@
-import re
+import os
 import unittest
+from types import SimpleNamespace
 
 from mkdocs_hooks.obsidian import (
+    ENV_MEDIA_BASE_URL,
     OBSIDIAN_EMBED_RE,
+    get_media_base_url,
     image_href,
     strip_about_author_section,
     strip_obsidian_tag_lines,
@@ -57,6 +60,45 @@ class TestTransformObsidianEmbeds(unittest.TestCase):
         )
         self.assertIn("../images/Pasted image 20260407160447.png", out)
         self.assertNotIn("images/images/", out)
+
+    def test_embed_uses_azure_media_base_url(self):
+        base = "https://example.blob.core.windows.net/media"
+        out = transform_obsidian_embeds(
+            "![[Pasted image 20260407160447.png]]",
+            doc_src_uri="posts/foo.md",
+            media_base_url=base,
+        )
+        self.assertIn("![](https://example.blob.core.windows.net/media/", out)
+        self.assertIn("20260407160447.png", out)
+        self.assertNotIn("%20%20", out)
+        self.assertNotIn("../images/", out)
+
+    def test_image_href_encodes_spaces_for_blob(self):
+        href = image_href(
+            "foo bar.png",
+            "posts/x.md",
+            media_base_url="https://acct.blob.core.windows.net/c",
+        )
+        self.assertEqual(href, "https://acct.blob.core.windows.net/c/foo%20bar.png")
+
+
+class TestMediaBaseUrl(unittest.TestCase):
+    def test_env_overrides_extra(self):
+        config = SimpleNamespace(extra={"media_base_url": "https://from-yaml.example/c"})
+        os.environ[ENV_MEDIA_BASE_URL] = "https://from-env.example/c"
+        try:
+            self.assertEqual(get_media_base_url(config), "https://from-env.example/c")
+        finally:
+            del os.environ[ENV_MEDIA_BASE_URL]
+
+    def test_extra_when_env_unset(self):
+        config = SimpleNamespace(extra={"media_base_url": "https://from-yaml.example/c/"})
+        prev = os.environ.pop(ENV_MEDIA_BASE_URL, None)
+        try:
+            self.assertEqual(get_media_base_url(config), "https://from-yaml.example/c")
+        finally:
+            if prev is not None:
+                os.environ[ENV_MEDIA_BASE_URL] = prev
 
 
 class TestStripObsidianTagLines(unittest.TestCase):

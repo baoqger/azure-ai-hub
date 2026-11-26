@@ -42,6 +42,7 @@ jobs:
       - name: Build MkDocs site
         env:
           APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ github.ref == 'refs/heads/main' && secrets.APPLICATIONINSIGHTS_CONNECTION_STRING || '' }}
+          AZURE_MEDIA_BASE_URL: ${{ vars.AZURE_MEDIA_BASE_URL }}
         run: mkdocs build --strict
 
       - name: Copy Static Web Apps config into site output

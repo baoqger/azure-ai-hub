@@ -100,6 +100,8 @@ extra_css:
   - assets/stylesheets/blog-excerpt-title.css
 
 extra:
+  # Post images on Azure Blob (public container). Overridden by AZURE_MEDIA_BASE_URL when set.
+  media_base_url: https://chrisarticleimages.blob.core.windows.net/images
   analytics:
     provider: appinsights
   social:

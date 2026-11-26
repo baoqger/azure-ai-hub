@@ -83,7 +83,16 @@ Run hook unit tests:
 ## Obsidian import vs. site build
 
 1. **Import** (`obsidian2hub`): Copies the vault **body** unchanged (including `![[image.png]]`) into `articles/posts/`, adds blog YAML (including **one category** you provide), and copies assets into `images/`.
-2. **Build** (`mkdocs build`): The [`mkdocs_hooks/obsidian.py`](mkdocs_hooks/obsidian.py) hook converts Obsidian embeds at build time and bundles `images/`.
+2. **Build** (`mkdocs build`): The [`mkdocs_hooks/obsidian.py`](mkdocs_hooks/obsidian.py) hook converts Obsidian `![[...]]` embeds at build time. With **no** media base URL, images are served from `site/images/`. With **`AZURE_MEDIA_BASE_URL`** (or `extra.media_base_url`), embeds point at Azure Blob/CDN and are **not** copied into `site/` (smaller deploy).
+
+### Article images (Azure Blob)
+
+| Context | Configuration | Behavior |
+|---------|---------------|----------|
+| **Local dev** | *(unset)* | Relative `../images/...` URLs; `images/` folder is bundled into `site/`. |
+| **CI / production** | GitHub **variable** `AZURE_MEDIA_BASE_URL` = `https://<account>.blob.core.windows.net/<container>` | Absolute blob URLs; `site/` excludes bundled images. |
+
+Optional default in [`mkdocs.yml`](mkdocs.yml) `extra.media_base_url` (overridden by the environment variable). Blob object names must match files under repo `images/` (flat names, URL-encoded in HTML). Container needs **Blob** anonymous read (or use a CDN origin URL as the base).
 
 Example import:
 
@@ -106,7 +115,10 @@ A single workflow builds and deploys the site:
 
 The deploy step uses `skip_app_build: true` and uploads the pre-built `site/` folder (MkDocs output).
 
-**Requirements in GitHub:** secret `AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_POND_0D22A6D0F` (injected when the SWA resource is linked to this repo).
+**Requirements in GitHub:**
+
+- Secret `AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_POND_0D22A6D0F` (injected when the SWA resource is linked to this repo).
+- Repository **variable** `AZURE_MEDIA_BASE_URL` — public blob or CDN base, e.g. `https://<account>.blob.core.windows.net/<container>` (no trailing slash required).
 
 **Azure portal:** Static Web App → **Configuration** → set `site_url` in [`mkdocs.yml`](mkdocs.yml) to match **Overview → URL** (or your custom domain).
 
