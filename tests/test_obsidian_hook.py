@@ -50,6 +50,14 @@ class TestTransformObsidianEmbeds(unittest.TestCase):
         md = "![alt](https://example.com/a.png)"
         self.assertEqual(transform_obsidian_embeds(md), md)
 
+    def test_embed_strips_redundant_images_prefix(self):
+        out = transform_obsidian_embeds(
+            "![[images/Pasted image 20260407160447.png]]",
+            doc_src_uri="posts/Implementing Agentic RAG on Azure From Hand-Coded Code to Ready-to-Use Solutions.md",
+        )
+        self.assertIn("../images/Pasted image 20260407160447.png", out)
+        self.assertNotIn("images/images/", out)
+
 
 class TestStripObsidianTagLines(unittest.TestCase):
     def test_removes_single_tag_line(self):

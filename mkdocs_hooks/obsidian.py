@@ -19,9 +19,17 @@ def _repo_root(config) -> Path:
     return Path(config.config_file_path).resolve().parent
 
 
+def normalize_image_asset_name(asset_name: str) -> str:
+    """Strip optional leading `images/` from Obsidian embed paths."""
+    name = asset_name.strip().replace("\\", "/")
+    if name.lower().startswith("images/"):
+        name = name[7:]
+    return name
+
+
 def image_href(asset_name: str, doc_src_uri: str) -> str:
     """Link from a doc file to a repo-level image (see on_files)."""
-    name = asset_name.strip().replace("\\", "/")
+    name = normalize_image_asset_name(asset_name)
     image_url = f"images/{name}"
     return get_relative_url(image_url, doc_src_uri)
 
@@ -34,7 +42,7 @@ def transform_obsidian_embeds(markdown: str, doc_src_uri: str = "") -> str:
         if doc_src_uri:
             href = image_href(name, doc_src_uri)
         else:
-            href = f"images/{name.replace(chr(92), '/')}"
+            href = f"images/{normalize_image_asset_name(name)}"
         return f"![]({href})"
 
     return OBSIDIAN_EMBED_RE.sub(repl, markdown)
